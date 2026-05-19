@@ -6,7 +6,7 @@
 
 | | |
 |---|---|
-| **Live demo** | *Coming soon — [Hugging Face Space](https://huggingface.co/spaces) (duplicate this repo as a Streamlit Space; set `GROQ_API_KEY` in Space secrets)* |
+| **Live demo** | **Not hosted yet** — follow [Deploy live demo (internet)](#deploy-live-demo-internet) below. After deploy, your app will be at `https://huggingface.co/spaces/<your-hf-username>/document-intelligence-rag` (example: [shubhamp02/document-intelligence-rag](https://huggingface.co/spaces/shubhamp02/document-intelligence-rag)) or Streamlit Cloud (see below). |
 | **Groq API** | Free tier key: [console.groq.com](https://console.groq.com/) |
 
 ### Tech stack
@@ -34,11 +34,39 @@ streamlit run app.py
 2. Ask a question (e.g. *What is semantic chunking?*) → expand **Sources** for citations.
 3. Optional eval: `python scripts/evaluate_rag.py --corpus sample_corpus --target-queries 20 --skip-ragas`
 
-### Deploy to Hugging Face Spaces (no secrets in git)
+## Deploy live demo (internet)
 
-1. On [huggingface.co/new-space](https://huggingface.co/new-space), choose **Streamlit** and duplicate or push this repository.
-2. In Space **Settings → Repository secrets**, add `GROQ_API_KEY` only (never commit `.env`).
-3. Use repo root `requirements.txt` and `.streamlit/config.toml`; optional `Dockerfile` for Docker Spaces.
+Get a **public URL** recruiters can open in a browser. **Never** put `GROQ_API_KEY` in git—only in the host’s secret store.
+
+**Source repo:** https://github.com/Shubham-p-02/document-intelligence-rag  
+**Entry file for hosts:** `streamlit_app.py` (imports `app.py`) · **CPU:** `requirements.txt` at repo root
+
+### Option A — Hugging Face Spaces (recommended)
+
+1. Sign in at [huggingface.co](https://huggingface.co) and run locally once: `hf auth login`
+2. Create a Space: [huggingface.co/new-space](https://huggingface.co/new-space) → **SDK: Streamlit** → name `document-intelligence-rag` → **Public**
+3. **Create from this GitHub repo:** Space → **Files and versions** → link repository `Shubham-p-02/document-intelligence-rag` (branch `main`), or clone/push the same files
+4. **Settings → Repository secrets:** add `GROQ_API_KEY` = your key from [console.groq.com](https://console.groq.com/) (free tier)
+5. **Settings → App:** ensure the app runs `streamlit run streamlit_app.py` (or leave default if HF detects `streamlit_app.py`). Wait for **Building** → **Running**, then open the Space tab **App**
+
+**Expected live URL (replace username with yours):**  
+`https://huggingface.co/spaces/shubhamp02/document-intelligence-rag`  
+Direct app link: `https://shubhamp02-document-intelligence-rag.hf.space` (HF may vary slug slightly)
+
+**CLI (after `hf auth login`):** from this repo folder, you can also create/link a Space with the Hub; secrets still go in the Space UI only.
+
+### Option B — Streamlit Community Cloud
+
+1. Go to [share.streamlit.io](https://share.streamlit.io) and sign in with GitHub
+2. **New app** → repository `Shubham-p-02/document-intelligence-rag`, branch `main`, main file path `streamlit_app.py`
+3. **Advanced settings → Secrets** (TOML), e.g. `GROQ_API_KEY = "gsk_..."` — paste only in the dashboard, not in the repo
+4. Deploy; open the `*.streamlit.app` URL Streamlit assigns
+
+### After deploy (both options)
+
+1. Open the live URL → corpus `sample_corpus` → **Build / rebuild index** (first run downloads embeddings; may take a few minutes on free CPU)
+2. Ask a test question; expand **Sources** to verify retrieval
+3. Add the final **Live demo** link to this README table (top of file) and push to GitHub
 
 ---
 
@@ -149,15 +177,9 @@ Typical tuning levers: lower `top-k`, tighten `max-distance`, raise semantic per
 - Judge LLM uses the same Groq model as the app; rate limits may require `--throttle-seconds`.
 - Full 220-query eval is **slow and API-heavy**; start with `--target-queries 20` for smoke tests.
 
-## Hugging Face Spaces
+## Hugging Face Spaces (reference)
 
-1. Create a **Streamlit** Space.
-2. Upload this folder (or connect a git repo).
-3. Add **Secrets**: `GROQ_API_KEY`.
-4. Ensure `requirements.txt` and `.streamlit/config.toml` are at the repo root.
-5. Optional: `packages.txt` for apt deps; `Dockerfile` for container Spaces.
-
-App command (Space settings): `streamlit run app.py --server.port=8501 --server.address=0.0.0.0`
+Same flow as [Option A above](#option-a--hugging-face-spaces-recommended). Use `streamlit run streamlit_app.py` as the app command. `requirements.txt` + `.streamlit/config.toml` live at repo root; optional `packages.txt` / `Dockerfile` for custom images.`
 
 Pre-build an index in the Space only if you ship corpus files; otherwise users build from uploads.
 
