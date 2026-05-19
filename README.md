@@ -2,7 +2,7 @@
 
 > **Production-style RAG over your documents** — semantic chunking, ChromaDB retrieval, Groq LLaMA-3.1 answers, Streamlit UI, and RAGAS evaluation.
 
-[![CI](https://github.com/YOUR_GITHUB_USER/document-intelligence-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_GITHUB_USER/document-intelligence-rag/actions) *(badge placeholder — add workflow when ready)*
+[![CI](https://github.com/Shubham-p-02/document-intelligence-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/Shubham-p-02/document-intelligence-rag/actions) *(badge placeholder — add workflow when ready)*
 
 | | |
 |---|---|
@@ -21,7 +21,7 @@
 ### Recruiter quick start (~5 min)
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USER/document-intelligence-rag.git
+git clone https://github.com/Shubham-p-02/document-intelligence-rag.git
 cd document-intelligence-rag
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
