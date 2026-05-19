@@ -2,11 +2,13 @@
 
 > **Production-style RAG over your documents** — semantic chunking, ChromaDB retrieval, Groq LLaMA-3.1 answers, Streamlit UI, and RAGAS evaluation.
 
+**Want a live link on the internet?** → Follow **[DEPLOY_SIMPLE.md](DEPLOY_SIMPLE.md)** (5 steps, no coding).
+
 [![CI](https://github.com/Shubham-p-02/document-intelligence-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/Shubham-p-02/document-intelligence-rag/actions) *(badge placeholder — add workflow when ready)*
 
 | | |
 |---|---|
-| **Live demo** | **Not hosted yet** — follow [Deploy live demo (internet)](#deploy-live-demo-internet) below. After deploy, your app will be at `https://huggingface.co/spaces/<your-hf-username>/document-intelligence-rag` (example: [shubhamp02/document-intelligence-rag](https://huggingface.co/spaces/shubhamp02/document-intelligence-rag)) or Streamlit Cloud (see below). |
+| **Live demo** | **[DEPLOY_SIMPLE.md](DEPLOY_SIMPLE.md)** — 5 steps to a public Hugging Face link (add `GROQ_API_KEY` in Space secrets only). |
 | **Groq API** | Free tier key: [console.groq.com](https://console.groq.com/) |
 
 ### Tech stack
