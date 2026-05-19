@@ -1,0 +1,6 @@
+Latency checklist:
+1. Use a compact embedding model (e.g. MiniLM) on CPU or GPU.
+2. Prefer small top-k unless recall drops unacceptably.
+3. Groq chat latency dominates end-to-end time for short contexts.
+
+Confidence scores in this demo are heuristic retrieval scores, not calibrated probabilities.

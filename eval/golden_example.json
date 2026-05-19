@@ -1,0 +1,10 @@
+[
+  {
+    "question": "What is document intelligence in this sample corpus?",
+    "ground_truth": "Document Intelligence combines ingestion, semantic chunking, vector retrieval, and LLM generation."
+  },
+  {
+    "question": "Which RAGAS metrics are mentioned?",
+    "ground_truth": "Faithfulness and answer relevancy are named as example RAGAS metrics."
+  }
+]
