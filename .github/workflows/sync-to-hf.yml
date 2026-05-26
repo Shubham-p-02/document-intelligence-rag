@@ -19,4 +19,4 @@ jobs:
           huggingface_repo_id: shubhamp02/document-intelligence-rag
           hf_token: ${{ secrets.HF_TOKEN }}
           repo_type: space
-          space_sdk: streamlit
+          space_sdk: gradio
