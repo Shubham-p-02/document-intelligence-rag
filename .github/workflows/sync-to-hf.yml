@@ -18,3 +18,5 @@ jobs:
           github_repo_id: Shubham-p-02/document-intelligence-rag
           huggingface_repo_id: shubhamp02/document-intelligence-rag
           hf_token: ${{ secrets.HF_TOKEN }}
+          repo_type: space
+          space_sdk: streamlit
