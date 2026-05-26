@@ -1,4 +1,16 @@
+---
+title: Document Intelligence RAG
+emoji: 🧠
+colorFrom: blue
+colorTo: indigo
+sdk: streamlit
+sdk_version: 1.39.0
+app_file: streamlit_app.py
+pinned: false
+---
+
 # Document Intelligence RAG
+
 
 > **Production-style RAG over your documents** — semantic chunking, ChromaDB retrieval, Groq LLaMA-3.1 answers, Streamlit UI, and RAGAS evaluation.
 
